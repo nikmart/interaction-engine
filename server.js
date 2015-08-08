@@ -3,7 +3,7 @@ var http = require('http');
 var app = express();
 var server = http.Server(app);
 var io = require('socket.io')(server);
-var SerialPort = require('serialport').SerialPort;
+var serialport = require('serialport');
 
 app.use(express.static('public'));
 
@@ -12,13 +12,16 @@ if(!process.argv[2]) {
     process.exit(1);
 }
 
-var serial = new SerialPort(process.argv[2]);
+var serial = new serialport.SerialPort(process.argv[2], {
+    parser: serialport.parsers.readline('\r\n')
+});
 
 io.on('connect', function(socket) {
     console.log('a user connected');
 
     socket.on('magic', function() {
-        serial.write('magic');
+        console.log('magic');
+        serial.write('m');
     });
 
     socket.on('disconnect', function() {
@@ -26,7 +29,10 @@ io.on('connect', function(socket) {
     });
 });
 
-//serial.on('data', function(data) {});
+serial.on('data', function(data) {
+    console.log('data:', data);
+    io.emit('data', data);
+});
 
 server.listen(8000, function() {
     console.log('listening on *:8000');
