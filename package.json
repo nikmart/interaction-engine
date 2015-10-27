@@ -14,8 +14,8 @@
   "author": "Victor Chahuneau <victor@chahuneau.fr>",
   "license": "mit",
   "dependencies": {
-    "serialport": "~1.7.4",
-    "express": "~4.13.3",
-    "socket.io": "~1.3.6"
+    "serialport": "",
+    "express": "",
+    "socket.io": ""
   }
 }

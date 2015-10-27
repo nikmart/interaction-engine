@@ -19,9 +19,14 @@ var serial = new serialport.SerialPort(process.argv[2], {
 io.on('connect', function(socket) {
     console.log('a user connected');
 
-    socket.on('magic', function() {
-        console.log('magic');
-        serial.write('m');
+    socket.on('ledON', function() {
+        console.log('ledON');
+        serial.write('h');
+    });
+
+    socket.on('ledOFF', function() {
+        console.log('ledOFF');
+        serial.write('l');
     });
 
     socket.on('disconnect', function() {

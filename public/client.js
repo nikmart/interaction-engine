@@ -3,8 +3,12 @@ var socket = io();
 // socket.on('connect', function() {});
 // socket.on('disconnect', function() {});
 
-function magic() {
-    socket.emit('magic');
+function ledON() {
+    socket.emit('ledON');
+}
+
+function ledOFF() {
+    socket.emit('ledOFF');
 }
 
 socket.on('data', function(data) {
