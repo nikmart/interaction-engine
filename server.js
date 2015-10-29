@@ -39,6 +39,7 @@ serial.on('data', function(data) {
     io.emit('data', data);
 });
 
+
 server.listen(8000, function() {
     console.log('listening on *:8000');
 });

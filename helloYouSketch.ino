@@ -1,9 +1,13 @@
 int led = 13; //led that we will toggle
 char inChar;
 
+int button = 2;
+int buttonState;
+
 void setup() {
   Serial.begin(9600);
   pinMode(led, OUTPUT);
+  pinMode(button, INPUT);
 }
 
 void loop() {
@@ -19,4 +23,15 @@ void loop() {
   else{
     digitalWrite(led, LOW);
   }
+
+  //lets check if the button is pressed
+  buttonState = digitalRead(button);
+  if(buttonState == HIGH){
+    Serial.println("light");
+  }
+  else{
+    Serial.println("shade");
+  }
+
+
 }
