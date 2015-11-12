@@ -1,7 +1,7 @@
-int led = 13; //led that we will toggle
+int led = 10; //led that we will toggle
 char inChar;
 
-int button = 2;
+int button = 5;
 int buttonState;
 
 void setup() {
