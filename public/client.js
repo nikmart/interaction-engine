@@ -1,5 +1,4 @@
 var socket = io();
-var song = document.getElementById('song1');
 
 //socket.on('connect', function() {});
 // socket.on('disconnect', function() {});
@@ -10,10 +9,6 @@ function ledON() {
 
 function ledOFF() {
     socket.emit('ledOFF');
-}
-
-function playSong1() {
-    socket.emit('playSong1');
 }
 
 socket.on('data', function(data) {
@@ -29,6 +24,3 @@ socket.on('data', function(data) {
             break;
     }
 });
-
-song1.autoplay = true;
-song1.load();
