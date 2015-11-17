@@ -1,4 +1,4 @@
-{
+node {
   "name": "interaction-engine.js",
   "version": "0.0.0",
   "description": "Interaction Engine",

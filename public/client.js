@@ -1,21 +1,17 @@
 var socket = io();
-var song = document.getElementById('song1');
 
-//socket.on('connect', function() {});
-// socket.on('disconnect', function() {});
-
+// send out LedOn message over socket
 function ledON() {
     socket.emit('ledON');
 }
 
+// send out ledOFF message over socket
 function ledOFF() {
     socket.emit('ledOFF');
 }
 
-function playSong1() {
-    socket.emit('playSong1');
-}
-
+// read the data from the message that the server sent and change the
+// background of the webpage based on the data in the message
 socket.on('data', function(data) {
     console.log('data:', data);
     switch(data) {
@@ -29,6 +25,3 @@ socket.on('data', function(data) {
             break;
     }
 });
-
-song1.autoplay = true;
-song1.load();
