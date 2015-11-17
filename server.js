@@ -45,7 +45,7 @@ io.on('connect', function(socket) {
 });
 
 serial.on('data', function(data) {
-    //console.log('data:', data);
+    console.log('data:', data);
     io.emit('data', data);
 });
 
