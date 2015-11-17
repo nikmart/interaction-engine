@@ -25,13 +25,14 @@ void loop() {
   }
 
   //lets check if the button is pressed
-  buttonState = digitalRead(button);
-  if(buttonState == HIGH){
-    Serial.println("light");
+  int newState = digitalRead(button);
+  if (buttonState != newState) {
+    buttonState = newState;
+    if(buttonState == HIGH){
+      Serial.println("light");
+    }
+    else{
+      Serial.println("shade");
+    }
   }
-  else{
-    Serial.println("shade");
-  }
-
-
 }
