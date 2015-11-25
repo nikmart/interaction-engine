@@ -14,8 +14,9 @@ node {
   "author": "Victor Chahuneau <victor@chahuneau.fr>",
   "license": "mit",
   "dependencies": {
-    "serialport": "",
-    "express": "",
-    "socket.io": ""
+    "express": "^4.13.3",
+    "node-pre-gyp": "0.6.x",
+    "serialport": "^2.0.5",
+    "socket.io": "^1.3.7"
   }
 }
