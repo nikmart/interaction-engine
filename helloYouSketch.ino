@@ -24,7 +24,7 @@ void loop() {
     digitalWrite(led, LOW);
   }
 
-  //lets check if the button is pressed
+  //lets check if the button is pressed and only send data if it is pressed
   int newState = digitalRead(button);
   if (buttonState != newState) {
     buttonState = newState;
