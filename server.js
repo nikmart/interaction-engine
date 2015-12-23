@@ -1,12 +1,13 @@
-var express = require('express');
-var http = require('http');
-var app = express();
-var server = http.Server(app);
-var io = require('socket.io')(server);
-var serialport = require('serialport');
+var express = require('express'); // web server application
+var http = require('http');				// http basics
+var app = express();							// instantiate express server
+var server = http.Server(app);		// connects http library to server
+var io = require('socket.io')(server);	// connect websocket library to server
+var serialport = require('serialport');	// serial library
+var serverPort = 8000;
 
 // use express to create the simple webapp
-app.use(express.static('public'));
+app.use(express.static('public'));		// find pages in public directory
 
 // check to make sure that the user calls the serial port for the arduino when
 // running the server
@@ -15,12 +16,13 @@ if(!process.argv[2]) {
     process.exit(1);
 }
 
-// start the seriaal port connection and read on newlines
+// start the serial port connection and read on newlines
 var serial = new serialport.SerialPort(process.argv[2], {
     parser: serialport.parsers.readline('\r\n')
 });
 
-// start the socket connection and say if someone connects
+// this is the websocket event handler and say if someone connects
+// as long as someone is connected, listen for messages
 io.on('connect', function(socket) {
     console.log('a user connected');
 
@@ -36,20 +38,21 @@ io.on('connect', function(socket) {
         serial.write('l');
     });
 
-    // if you get the 'disconnet' message, say the user disconnected
+    // if you get the 'disconnect' message, say the user disconnected
     socket.on('disconnect', function() {
         console.log('user disconnected');
     });
 });
 
-// read the serial data coming back from the arduino
-// and send it off to the client using a socket msg
+// this is the serial port event handler.
+// read the serial data coming from arduino
+// and send it off to the client using a socket message
 serial.on('data', function(data) {
     console.log('data:', data);
     io.emit('data', data);
 });
 
-// start the server and say waht port it is on
-server.listen(8000, function() {
-    console.log('listening on *:8000');
+// start the server and say what port it is on
+server.listen(serverPort, function() {
+    console.log('listening on *:%s', serverPort);
 });
