@@ -1,3 +1,5 @@
 #exclude node modules and log files
 /node_modules
 *.log
+*.DS
+*._.DS
