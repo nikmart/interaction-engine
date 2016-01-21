@@ -1,3 +1,7 @@
 # Interaction Engine
 
-To run this example, clone the repo and run server.js using node.
+To run this example:
+
+1. clone the repo
+2. upload the `helloYouSketch.ino` you your Arduino
+3. run `server.js /dev/ttyACM0` using node (make sure your Arduino port is correct)

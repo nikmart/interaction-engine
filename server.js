@@ -26,16 +26,16 @@ var serial = new serialport.SerialPort(process.argv[2], {
 io.on('connect', function(socket) {
     console.log('a user connected');
 
-    // if you get the 'ledON' msg, send an 'h' to the arduino
+    // if you get the 'ledON' msg, send an 'H' to the arduino
     socket.on('ledON', function() {
         console.log('ledON');
-        serial.write('h');
+        serial.write('H');
     });
 
-    // if you get the 'ledOFF' msg, send an 'l' to the arduino
+    // if you get the 'ledOFF' msg, send an 'H' to the arduino
     socket.on('ledOFF', function() {
         console.log('ledOFF');
-        serial.write('l');
+        serial.write('L');
     });
 
     // if you get the 'disconnect' message, say the user disconnected
@@ -45,11 +45,11 @@ io.on('connect', function(socket) {
 });
 
 // this is the serial port event handler.
-// read the serial data coming from arduino
+// read the serial data coming from arduino - you must use 'data' as the first argument
 // and send it off to the client using a socket message
 serial.on('data', function(data) {
     console.log('data:', data);
-    io.emit('data', data);
+    io.emit('server-msg', data);
 });
 
 // start the server and say what port it is on

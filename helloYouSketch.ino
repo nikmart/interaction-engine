@@ -1,5 +1,5 @@
-int led = 10; //led that we will toggle
-char inChar;
+int led = 10; // led that we will toggle
+char inChar;  // character we will use for messages from the RPi
 
 int button = 5;
 int buttonState;
@@ -11,20 +11,20 @@ void setup() {
 }
 
 void loop() {
+  // read the character we recieve on the serial port from the RPi
   if(Serial.available()) {
-    // read the character we recieve
     inChar = (char)Serial.read();
   }
 
-  // if we get a 'h', turn the LED on
-  if(inChar == 'h'){
+  // if we get a 'H', turn the LED on, else turn it off
+  if(inChar == 'H'){
     digitalWrite(led, HIGH);
   }
   else{
     digitalWrite(led, LOW);
   }
 
-  //lets check if the button is pressed and only send data if it is pressed
+  // Button event checker - if pressed, send message to RPi
   int newState = digitalRead(button);
   if (buttonState != newState) {
     buttonState = newState;
@@ -32,7 +32,7 @@ void loop() {
       Serial.println("light");
     }
     else{
-      Serial.println("shade");
+      Serial.println("dark");
     }
   }
 }

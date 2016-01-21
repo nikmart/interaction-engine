@@ -1,4 +1,4 @@
-node {
+{
   "name": "interaction-engine.js",
   "version": "0.0.0",
   "description": "Interaction Engine",
@@ -6,10 +6,6 @@ node {
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git@bitbucket.org:vchahun/interaction-engine.js.git"
   },
   "author": "Victor Chahuneau <victor@chahuneau.fr>",
   "license": "mit",
