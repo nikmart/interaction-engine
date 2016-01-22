@@ -1,14 +1,11 @@
 {
-  "name": "interaction-engine.js",
-  "version": "0.0.0",
-  "description": "Interaction Engine",
+  "name": "helloYou",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Hello, you sample project",
   "main": "server.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
-  },
-  "author": "Victor Chahuneau <victor@chahuneau.fr>",
-  "license": "mit",
+  "author": "Nik Martelaro <nmartelaro@gmail.com>",
+  "license": "MIT",
   "dependencies": {
     "express": "^4.13.3",
     "node-pre-gyp": "0.6.x",
