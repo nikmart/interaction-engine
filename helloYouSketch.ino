@@ -1,7 +1,7 @@
 int led = 10; // led that we will toggle
 char inChar;  // character we will use for messages from the RPi
 
-int button = 5;
+int button = 15;
 int buttonState;
 
 void setup() {
